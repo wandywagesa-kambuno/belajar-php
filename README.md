@@ -1,2 +1,2 @@
-# belajar-github
-saya sedang belajar github
+# belajar php
+menkoneksikan web dengan metode crud
