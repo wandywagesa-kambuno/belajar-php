@@ -1,4 +1,6 @@
-
+<?php 
+require "koneksi.php"; // Memastikan variabel $lemari dari koneksi.php terbawa ke sini
+?>
 <!DOCTYPE html>
 <html>
 <head>
