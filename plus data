@@ -1,0 +1,42 @@
+<?php 
+require "koneksi.php"; // Perbaikan: Ditambahkan titik koma (;)
+
+if(isset($_POST["submit"])){
+     if (tambah($_POST)){
+         // Perbaikan: Perubahan kutip internal menjadi kutip satu ('), dan perbaikan kata <script>
+         echo "<script>
+                  alert('Data berhasil ditambahkan');
+                  document.location.href = 'index.php';
+               </script>";
+     } else {
+         echo "<script>
+                  alert('Data gagal ditambahkan');
+                  document.location.href = 'index.php';
+               </script>";
+     }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tambah Data</title>
+</head>
+<body>
+
+	<h2>FORMULIR TAMBAH DATA</h2>
+
+	<form action="" method="post">
+	   <label for="na">Nama</label>
+       <input type="text" name="nama" id="na" required>
+       <br><br>
+       <label for="um">Umur</label>
+       <input type="text" name="umur" id="um" required>
+       <br><br>
+       <button type="submit" name="submit">Kirim</button>
+	</form>
+   
+</body>
+</html>
