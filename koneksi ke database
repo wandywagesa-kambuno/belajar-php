@@ -1,0 +1,36 @@
+<?php 
+$conn = mysqli_connect("localhost", "root", "", "pelajar"); 
+
+// Catatan: Jika mengganggu karena muncul terus, alert berhasil/tidak ini bisa dihapus nanti
+if (!$conn): ?>
+    <script>alert("Koneksi Database Gagal");</script>
+    
+<?php endif; 
+
+$query = "SELECT * FROM datapelajar"; 
+$lemari = mysqli_query($conn, $query);
+
+// Membuat fungsi tambah data
+function tambah($data){
+    global $conn;
+
+	// Tangkap data yang dikirim dari form
+	$nama = htmlspecialchars($data["nama"]); // Menggunakan htmlspecialchars agar lebih aman
+	$umur = htmlspecialchars($data["umur"]);
+
+    // Perbaikan: INSERT INTO (bukan INSER) dan memanggil variabel dengan '$nama' dan '$umur'
+	$query = "INSERT INTO datapelajar VALUES ('', '$nama', '$umur')";
+
+	mysqli_query($conn, $query);
+
+    // Kembalikan angka (1 jika berhasil, -1 jika gagal)
+	return mysqli_affected_rows($conn);
+}
+
+function hapus($id){
+
+	global $conn;
+	mysqli_query($conn,"DELETE FROM datapelajar WHERE id =$id");
+	return mysqli_affected_rows($conn);
+}
+?>
