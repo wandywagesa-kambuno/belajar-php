@@ -42,4 +42,23 @@ function hapus($id){
 	mysqli_query($conn,"DELETE FROM datapelajar WHERE id =$id");
 	return mysqli_affected_rows($conn);
 }
+function update($data) {
+    global $conn;
+    
+    // Tangkap data dari form dan bersihkan
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama"]);
+    $umur = htmlspecialchars($data["umur"]);
+
+    // Kueri untuk mengubah data di database
+    $query = "UPDATE datapelajar SET 
+                nama = '$nama', 
+                umur = '$umur' 
+              WHERE id = $id";
+              
+    mysqli_query($conn, $query);
+
+    // Mengembalikan jumlah baris yang berubah (1 jika berhasil, 0 jika tidak ada perubahan, -1 jika gagal)
+    return mysqli_affected_rows($conn);
+}
 ?>
